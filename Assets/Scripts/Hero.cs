@@ -1,13 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Hero : MonoBehaviour
+public class Hero : EntityBase
 {
     private float _speed = 5.0f;
+    public static Hero Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+    private static Hero _instance;
 
     void Awake()
     {
-
+        _instance = this;
+        this.Health = 1;
     }
 
     void Start()
@@ -28,5 +37,11 @@ public class Hero : MonoBehaviour
             //transform.forward = currentDestination - transform.position;
             //transform.Translate(Vector3.forward * _speed * Time.deltaTime);
         }
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        GameManager.Instance.ChangeState(GameManager.GameStates.RecapScreen);
     }
 }

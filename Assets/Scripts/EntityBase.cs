@@ -1,31 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour
+public class EntityBase : MonoBehaviour
 {
-    private int Health = 10;
+    public int Health = 1;
 
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    // bubbled up from ParticleCollider
     public void OnParticleCollision(GameObject other)
     {
-        Debug.Log("Partical collision");
         StartCoroutine(FlashSprites(GetComponentsInChildren<SpriteRenderer>(), 1, .1f, false));
-        if (Health-- <= 0)
+        if (--Health <= 0)
         {
-            Destroy(this.gameObject);
+            Die();
         }
+    }
+
+    public virtual void Die()
+    {
     }
 
     /**
@@ -68,7 +59,6 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    // for changing the alpha
                     sprites[i].renderer.material.color = Color.white;
                 }
             }
@@ -77,6 +67,4 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(delay);
         }
     }
- 
-
 }
