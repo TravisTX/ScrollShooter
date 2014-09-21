@@ -3,20 +3,23 @@ using System.Collections;
 
 public class EntityBase : MonoBehaviour
 {
-    public int Health = 1;
+    protected int Health = 1;
 
     // bubbled up from ParticleCollider
     public void OnParticleCollision(GameObject other)
     {
         StartCoroutine(FlashSprites(GetComponentsInChildren<SpriteRenderer>(), 1, .1f, false));
+        var oldHealth = Health;
         if (--Health <= 0)
         {
             Die();
         }
+        Debug.Log("Hit.  OldHealth: " + oldHealth + " NewHealth: " + Health);
     }
 
     public virtual void Die()
     {
+        Debug.Log("EntityBase Die");
     }
 
     /**

@@ -41,7 +41,6 @@ public class Hero : EntityBase
 
     public override void Die()
     {
-        base.Die();
         GameManager.Instance.ChangeState(GameManager.GameStates.RecapScreen);
     }
 }

@@ -9,7 +9,7 @@ public class Bunny : EnemyBase
 
     void Awake()
     {
-        this.Health = 2;
+        Health = 3;
     }
 
     void Start()
@@ -49,8 +49,8 @@ public class Bunny : EnemyBase
 
     public override void Die()
     {
-        base.Die();
+        Debug.Log("Bunny Die");
         Destroy(this.gameObject);
-    }    
+    }
 
 }
