@@ -19,6 +19,9 @@ public class Bunny : EnemyBase
 
     void Update()
     {
+        if (!IsActive)
+            return;
+
         Debug.DrawLine(transform.position, _currentDestination, Color.white);
 
         Vector3 directionOfTravel = _currentDestination - transform.position;
@@ -32,8 +35,6 @@ public class Bunny : EnemyBase
             (directionOfTravel.z * _speed * Time.deltaTime),
             Space.World);
 
-
-        //transform.position = Vector3.Lerp(transform.position, _currentDestination, _speed * Time.deltaTime);
         if ((_currentDestination - transform.position).magnitude < 0.1f)
         {
             // we have arrived

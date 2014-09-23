@@ -24,10 +24,20 @@ public class ViewPort : MonoBehaviour
     {
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Enemy")
+        {
+            other.GetComponent<EnemySquad>().Activate();
+        }
+        if (other.tag == "Enemy")
+        {
+            other.GetComponent<EnemyBase>().Activate();
+        }
+    }
+
     void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("OnTriggerExit");
-        Debug.Log(other);
         if (other.tag == "Enemy")
         {
             Destroy(other.gameObject);

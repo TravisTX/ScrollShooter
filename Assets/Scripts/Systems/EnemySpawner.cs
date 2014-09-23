@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (Time.time > _nextSpawnTime)
         {
-            var go = (GameObject)UnityEngine.Object.Instantiate(_bunnyPrefab, new Vector3(-2, 5.5f, 0), new Quaternion(0, 0, 0, 0));
+            //var go = (GameObject)UnityEngine.Object.Instantiate(_bunnyPrefab, new Vector3(-2, 5.5f, 0), new Quaternion(0, 0, 0, 0));
             _nextSpawnTime = Time.time + _spawnFrequency;
         }
     }
