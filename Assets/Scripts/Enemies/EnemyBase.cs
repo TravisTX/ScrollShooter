@@ -12,6 +12,7 @@ public class EnemyBase : EntityBase
 
     public void Activate()
     {
+        this.transform.parent = null;
         IsActive = true;
     }
 

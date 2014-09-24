@@ -14,13 +14,17 @@ public class Bunny : EnemyBase
 
     void Start()
     {
-        _currentDestination = transform.position;
     }
 
     void Update()
     {
         if (!IsActive)
             return;
+
+        if (_currentDestination == Vector3.zero)
+        {
+            _currentDestination = transform.position;
+        }
 
         Debug.DrawLine(transform.position, _currentDestination, Color.white);
 
