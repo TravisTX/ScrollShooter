@@ -28,4 +28,12 @@ public class ScrollSpawner : MonoBehaviour
         this.transform.position = new Vector3(transform.position.x, transform.position.y - _speed * Time.deltaTime, transform.position.z);
 
     }
+
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(transform.position, new Vector3(6.5f, 100000f, 1));
+    }
+
 }

@@ -20,12 +20,7 @@ public class Bunny : EnemyBase
     {
         if (!IsActive)
             return;
-
-        if (_currentDestination == Vector3.zero)
-        {
-            _currentDestination = transform.position;
-        }
-
+        
         Debug.DrawLine(transform.position, _currentDestination, Color.white);
 
         Vector3 directionOfTravel = _currentDestination - transform.position;
@@ -46,6 +41,14 @@ public class Bunny : EnemyBase
         }
     }
 
+
+    public override void Activate()
+    {
+        base.Activate();
+        _currentDestination = transform.position;
+        this.transform.FindChild("Gun1").GetComponent<ParticleSystem>().Play();
+    }
+
     private void GetNextDestination()
     {
         _currentDestinationLeft = !_currentDestinationLeft;
@@ -54,6 +57,7 @@ public class Bunny : EnemyBase
 
     public override void Die()
     {
+        base.Die();
         Debug.Log("Bunny Die");
         Destroy(this.gameObject);
     }

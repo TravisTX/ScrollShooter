@@ -10,11 +10,10 @@ public class EnemyBase : EntityBase
         Debug.Log("EnemeyBase Die");
     }
 
-    public void Activate()
+    public virtual void Activate()
     {
-        this.transform.parent = null;
+        transform.parent = null;
         IsActive = true;
     }
-
 
 }

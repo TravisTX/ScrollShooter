@@ -44,4 +44,10 @@ public class ViewPort : MonoBehaviour
         }
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(transform.position, new Vector3(6.5f, 10f, 1));
+    }
+
 }
