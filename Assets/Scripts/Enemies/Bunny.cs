@@ -46,7 +46,7 @@ public class Bunny : EnemyBase
     {
         base.Activate();
         _currentDestination = transform.position;
-        this.transform.FindChild("Gun1").GetComponent<ParticleSystem>().Play();
+        this.transform.FindChild("Weapon1").GetComponent<ParticleSystem>().Play();
     }
 
     private void GetNextDestination()

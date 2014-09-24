@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class Hero : EntityBase
 {
-    private float _speed = 5.0f;
     public static Hero Instance
     {
         get
@@ -13,10 +13,15 @@ public class Hero : EntityBase
     }
     private static Hero _instance;
 
+    private float _speed = 5.0f;
+    private int _weaponId = 0;
+
     void Awake()
     {
         _instance = this;
         this.Health = 1;
+        _weaponId = 0;
+        UpgradeWeapon();
     }
 
     void Start()
@@ -42,5 +47,30 @@ public class Hero : EntityBase
     public override void Die()
     {
         GameManager.Instance.ChangeState(GameManager.GameStates.RecapScreen);
+    }
+
+    public void UpgradeWeapon()
+    {
+        _weaponId++;
+        transform.FindChild("Weapon1").GetComponentInChildren<ParticleSystem>().Stop();
+        transform.FindChild("Weapon2").GetComponentInChildren<ParticleSystem>().Stop();
+
+        Transform weaponTransform = null;
+
+        if (_weaponId == 1)
+        {
+            weaponTransform = transform.FindChild("Weapon1");
+        }
+        if (_weaponId == 2)
+        {
+            weaponTransform = transform.FindChild("Weapon2");
+        }
+
+
+
+        foreach (var pe in weaponTransform.GetComponentsInChildren<ParticleSystem>())
+        {
+            pe.Play();
+        }
     }
 }

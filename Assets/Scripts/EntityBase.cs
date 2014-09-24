@@ -14,7 +14,7 @@ public class EntityBase : MonoBehaviour
         {
             Die();
         }
-        Debug.Log("Hit.  OldHealth: " + oldHealth + " NewHealth: " + Health);
+        //Debug.Log("Hit.  OldHealth: " + oldHealth + " NewHealth: " + Health);
     }
 
     public virtual void Die()
